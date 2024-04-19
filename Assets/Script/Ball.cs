@@ -16,4 +16,20 @@ public class Ball : MonoBehaviour
     {
         
     }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.transform.CompareTag("RacketUp"))
+        {
+            var racket=other.transform.gameObject.GetComponent<RacketController>();
+            var directionVertical = racket.isUp ? -1 : 1;
+            var directionHorizontal= (transform.position.x - racket.transform.position.x);
+
+            rb.AddForce(new Vector2 (directionVertical, directionHorizontal));
+        }
+        if (other.transform.CompareTag("RacketDown"))
+        {
+            rb.AddForce(Vector3.up * speed);
+        }
+    }
 }

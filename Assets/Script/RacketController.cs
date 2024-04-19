@@ -6,6 +6,7 @@ public class RacketController : MonoBehaviour
 {
     public float speed;
     public float limitHorizontal=2.2f;
+    public bool isUp;
 
     // Start is called before the first frame update
     void Start()
