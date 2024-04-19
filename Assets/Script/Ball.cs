@@ -15,6 +15,8 @@ public class Ball : MonoBehaviour
     }
     public void OnStart()
     {
+        GameManager.Instance.textTry.SetActive(false);
+        transform.position = Vector2.zero;
         rb.AddForce(Vector3.down * speed);
     }
 
@@ -46,6 +48,7 @@ public class Ball : MonoBehaviour
 
         if(other.transform.CompareTag("GameOver"))
         {
+            rb.velocity = Vector2.zero;
             GameManager.Instance.GameOver();
         }
     }

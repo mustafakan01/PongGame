@@ -9,6 +9,8 @@ public class RacketController : MonoBehaviour
     public bool isUp;
     [SerializeField] private bool isPlayer;
 
+    [SerializeField] private float aiSpeed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +30,7 @@ public class RacketController : MonoBehaviour
         }
         else 
         {
-            var ai = Ball.Instance.transform.position.x;
+            var ai = Mathf.Lerp(newPoz.x, Ball.Instance.transform.position.x,aiSpeed*Time.deltaTime) ;
             newPoz.x = ai;
         }
 
